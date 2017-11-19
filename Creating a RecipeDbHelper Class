@@ -1,0 +1,24 @@
+package com.codeschool.tinybytes;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class RecipeDbHelper extends SQLiteOpenHelper {
+    public RecipeDbHelper(Context context) {
+        super(context, RecipeContract.DB_NAME,
+              null, RecipeContract.DB_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db){
+       db.execSQL(RecipeContract.SQL_CREATE_ENTRIES);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, 
+                          int oldVersion, int newVersion){
+        db.execSQL(RecipeContract.SQL_DELETE_ENTRIES);
+        onCreate(db);
+    }
+}
