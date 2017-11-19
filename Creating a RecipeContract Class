@@ -1,0 +1,28 @@
+package com.codeschool.tinybytes;
+
+import android.provider.BaseColumns;
+
+public class RecipeContract {
+    public static final String DB_NAME = "tinybytes.db";
+    public static final int DB_VERSION = 1;
+  
+    public static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE " + RecipeEntry.TABLE_NAME + " (" + 
+            RecipeEntry._ID + " INTEGER PRIMARY KEY," +
+            RecipeEntry.COLUMN_NAME_NAME + " TEXT," +
+            RecipeEntry.COLUMN_NAME_IMAGE + " TEXT," +
+                    RecipeEntry.COLUMN_NAME_INGREDIENTS + " TEXT," +
+                    RecipeEntry.COLUMN_NAME_DIRECTIONS + " TEXT)";
+    
+    public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + RecipeEntry.TABLE_NAME;
+    
+    public static class RecipeEntry implements BaseColumns {
+        public static final String TABLE_NAME = "recipe";
+        public static final String COLUMN_NAME_NAME = "name";
+        public static final String COLUMN_NAME_IMAGE = "image";
+        public static final String COLUMN_NAME_INGREDIENTS = "ingredients";
+        public static final String COLUMN_NAME_DIRECTIONS = "directions";
+       
+        
+    }
+} 
